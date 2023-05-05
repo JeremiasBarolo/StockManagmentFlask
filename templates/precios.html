@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block content %}
+</br>
+<div class="container">
+  <table class="table table-bordered">
+      <tr class="table-secondary ">
+        <th scope="col">Nombre</th>
+        <th scope="col">Costo</th>
+        <th scope="col">Precio de Lista</th>
+      </tr>
+      {% for producto in productos %}
+      <tr> 
+        <td scope="row">{{producto.0}}</td>   
+        <td scope="row">{{producto.3}} $</td>  
+        <td scope="row">{{producto.4}} $</td>    
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}

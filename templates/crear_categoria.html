@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+</br>
+<div class="container col-sm-3 text-center">
+    {% if categorias %}
+        <link rel="stylesheet" href="../static/css/custom.css">
+        <h2 class="text-center">Editar Categoria: {{categoria.1}}</h2>
+    {% else %}
+        <h2 class="text-center">Crear Categoria</h2>
+    {% endif %}
+    </br>
+    <form class="conteiner" method="POST">
+        <div class="box-body">
+            <div class="form-group">
+                <label for= 'nombre' class="col-md-2  control-label">Categoria:</label>
+                <div class="col-md-6 mt-2 input-group">
+                    <input class="form-control" type='text' name='categoria_name'/>
+                    </input>
+                </div>
+            </div>
+            
+            </br>
+        <input class="btn btn-primary" type='submit' value='Guardar'>
+        
+                       
+    </form>
+</div>
+{% endblock content %}

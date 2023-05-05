@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+</br>
+<div class="container col-sm-3 text-center">
+    {% if producto %}
+        <h2>Editar Articulo: {{producto.0}}</h2>
+        <link rel="stylesheet" href="../static/css/custom.css">
+    {% else %}
+        <h2 class="text-center">Crear Articulo</h2>
+    {% endif %}
+    </br>
+    <form class="form-horizontal" method="POST">
+        <div class="box-body">
+            <div class="form-group">
+                <label for= 'nombre' class="col-md-2 control-label">Nombre:</label>
+                <div class="col-md-6 input-group">
+                    <input class="form-control" type= 'text' name= 'nombre' value="{{producto.0}}"/>
+                </div>
+            </div>
+            <label class="mt-2" for= 'cantidad_stock'> Cantidad en Stock</label>
+            <input class="form-control" type= 'number' name= 'cantidad_stock' value="{{producto.1}}"/>
+            <label class="mt-2" for= 'marca'> Marca</label>
+            <input class="form-control" type= 'text' name= 'marca' value="{{producto.2}}"/>
+            <label class="mt-2" for= 'costo'> Costo</label>
+            <input class="form-control" type= 'number' name= 'costo' value="{{producto.3}}"/>
+            <label class="mt-2" for= 'precio_de_lista'> Precio de Lista</label>
+            <input class="form-control" type= 'number' name= 'precio_de_lista' value="{{producto.4}}"/>
+            <label class="mt-2" for= 'vencimiento'> Vencimiento</label>
+            <input class="form-control" type= 'date' name= 'vencimiento' value="{{producto.5}}"/>
+            <label class="mt-2" for= 'proveedor'> Proveedor</label>
+            <input class="form-control" type= 'text' name= 'proveedor' value="{{producto.6}}"/>
+            <label class="mt-2" for= 'categoria'>Categoria</label>
+            <select name='categoria_name' class="form-select" aria-label="Default select example">
+                {% for categoria in categorias %}
+                <option value="{{categoria.1}}" {% if categoria.1 == producto.7 %} selected {% endif %}>
+                     {{categoria.1}}
+                </option>
+                {% endfor %}
+            </select>
+            
+            </br>
+        <input class="btn btn-primary" type='submit' value='Guardar'>
+        
+                       
+    </form>
+</div>
+{% endblock content %}

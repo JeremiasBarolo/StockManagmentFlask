@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% block content %}
+</br>
+    <div class="container col-sm-3">
+        {% if proveedor %}
+            <legend> Editar Proveedor: {{proveedor.0}}</legend>
+            <link rel="stylesheet" href="../static/css/custom.css">
+            
+        {% else %}
+            <legend> Crear Proveedor</legend>
+        {% endif %}
+        
+        <form action="" method="POST">
+            <div class="mb-3 col-mb-12"> 
+                <label class="form-label col-mb-3" for='nombre'>Nombre</label>
+                <input class="form-control col-mb-3" type= 'text' name= 'nombre' value="{{proveedor.0}}"/>
+                <label class="form-label" for= 'empresa1'>Empresa</label>
+                <input class="form-control" type= 'text' name= 'empresa1' value="{{proveedor.1}}"/>
+                <label class="form-label" for= 'numero_tel'>Numero de Telefono</label>
+                <input class="form-control" type= 'number' name= 'numero_tel' value="{{proveedor.2}}"/>
+            </div>
+
+            <input class="btn btn-primary" type='submit' value='Guardar'>  
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block content %}
+  {% with messages = get_flashed_messages()%}
+    {%if messages%}
+      {% for message in messages %}
+        <div class="alert alert-info text-center" role="alert">{{message}}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  </br>
+  <div class="container">
+    <table class="table table-bordered">
+      <tr class="table-secondary ">
+        <th scope="col">Nombre</th>
+        <th scope="col">Acciones</th>
+      </tr>
+      {% for categoria in categorias %}
+        <tr> 
+          <td scope="row">{{categoria.1}}</td>
+          <td>
+            <a href="{{url_for('editar_categoria', nombre1=categoria.1)}}" class="btn btn-primary center">Editar</a>
+            <a href="{{url_for('borrar_categoria', nombre1=categoria.1)}}" class="btn btn-danger center">Eliminar</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+    </div>
+  </div>
+  
+
+{% endblock content %}

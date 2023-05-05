@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block content %}
+</br>
+<div class="container">
+  <table class="table table-bordered">
+      <tr class="table-secondary ">
+        <th scope="col">Nombre</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Costo</th>
+        <th scope="col">Precio de Lista</th>
+        <th scope="col">Vencimiento</th>
+        <th scope="col">Proveedor</th>
+        <th scope="col">Categoria</th>
+      </tr>
+      {% for producto in productos %}
+      <tr> 
+        <td scope="row">{{producto.0}}</td>  
+        <td scope="row">{{producto.1}}</td>  
+        <td scope="row">{{producto.2}}</td>  
+        <td scope="row">{{producto.3}}</td>  
+        <td scope="row">{{producto.4}}</td>  
+        <td scope="row">{{producto.5}}</td>  
+        <td scope="row">{{producto.6}}</td>
+        <td scope="row">{{producto.7}}</td>    
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}

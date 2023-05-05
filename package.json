@@ -1,0 +1,23 @@
+{
+  "name": "stockapp-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeremiasBarolo/StockManagmentFlask.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeremiasBarolo/StockManagmentFlask/issues"
+  },
+  "homepage": "https://github.com/JeremiasBarolo/StockManagmentFlask#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.0-alpha3"
+  }
+}

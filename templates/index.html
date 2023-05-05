@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block content %}
+  {% with messages = get_flashed_messages()%}
+    {%if messages%}
+      {% for message in messages %}
+        <div class="alert alert-info text-center" role="alert">{{message}}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  </br>
+  
+  <div class="container">
+    <div class="row col-sm-12 d-flex justify-content-center">
+      {% for producto in productos %}
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-header text-center bg-primary">{{producto.6}}</div>
+          <div class="card-body">
+            <h5 class="card-title text-center">{{producto.0}}</h5>
+            <p class="card-text text-center">Cantidad: {{producto.1}}</p>
+            <div class="text-center">
+              <a href="{{url_for('editar_articulo', nombre1=producto.0)}}" class="btn btn-success center">Editar</a>
+              <a href="{{url_for('borrar_articulo', nombre1=producto.0)}}" class="btn btn-danger center">Eliminar</a>
+            </div>
+          </div>
+        </div>
+      </br>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+  
+{% endblock content %}
