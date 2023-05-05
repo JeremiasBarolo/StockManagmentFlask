@@ -178,6 +178,40 @@ def borrar_proveedor(nombre1):
     flash("El proveedor ha sido eliminado.")
     return redirect(url_for('proveedores'))
 
+#<================================================== Editar Categoria ==================================================================>
+@app.route('/editar/<nombre1>', methods= ['GET', 'POST'])
+def editar_categoria(nombre1):
+
+    if request.method =='POST':
+        #Busqueda de datos del formulario
+        if nombre1:
+            cursor = mysql.connection.cursor()
+            cursor.execute("SELECT id FROM categorias WHERE nombre = %s", (nombre1,))
+            id = cursor.fetchall()
+        if "categoria_name" in request.form:
+            nombre= request.form["categoria_name"]
+
+        #Editado de los datos
+        cursor = mysql.connection.cursor()
+        cursor.execute("""
+            UPDATE categorias
+            SET nombre = %s
+            WHERE id = %s
+
+        """, (nombre, id))
+        cursor.connection.commit()
+
+        flash("La categoria ha sido actualizado.")
+        return redirect(url_for('categorias'))
+    
+    
+    cursor = mysql.connection.cursor()
+    cursor.execute("SELECT nombre FROM categorias WHERE nombre = %s", (nombre1,))
+    categorias=cursor.fetchall()
+    cursor.close()
+    #flash("El artículo ha sido eliminado.")
+    return render_template('crear_categoria.html', categorias=categorias)
+
 #<================================================== Editar Articulo ==================================================================>
 @app.route('/editar/<nombre1>', methods= ['GET', 'POST'])
 def editar_articulo(nombre1):
@@ -233,35 +267,7 @@ def editar_articulo(nombre1):
     return render_template('crear_productos.html', producto=producto[0], categorias=categorias)
 
 
-#<================================================== Editar Categoria ==================================================================>
-@app.route('/editar/<nombre1>', methods= ['GET', 'POST'])
-def editar_categoria(nombre1):
 
-    if request.method =='POST':
-        #Busqueda de datos del formulario
-        if "nombre" in request.form:
-            nombre= request.form["nombre"]
-
-        #Editado de los datos
-        cursor = mysql.connection.cursor()
-        cursor.execute("""
-            UPDATE categorias
-            SET nombre = %s,
-            WHERE nombre = %s
-
-        """, (nombre, nombre1))
-        cursor.connection.commit()
-
-        flash("La categoria ha sido actualizado.")
-        return redirect(url_for('index'))
-    
-    
-    cursor = mysql.connection.cursor()
-    cursor.execute("SELECT * FROM categorias")
-    categorias=cursor.fetchall()
-    cursor.close()
-    #flash("El artículo ha sido eliminado.")
-    return render_template('crear_categoria.html', categorias=categorias)
 
 
 #<================================================== Crear Proveedor ==================================================================>
